@@ -11,7 +11,7 @@ data.forEach(() => {
   console.log("...");
 });
 
-export const ChildArea = (props) => {
+export const ChildArea = memo((props) => {
   console.log("ChildAreaが再レンダリングされた");
   const { open } = props;
   return (
@@ -23,4 +23,4 @@ export const ChildArea = (props) => {
       ) : null}
     </>
   );
-};
+});
