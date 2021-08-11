@@ -6,19 +6,22 @@ const style = {
   backgroundColor: "khaki"
 };
 
-const data = [...Array(100).keys()];
-data.forEach(() => {
-  console.log("...");
-});
-
+// memoを使用することでpropsに変更がない限り、親コンポーネントに変更があっても再レンダリングされない
 export const ChildArea = memo((props) => {
+  const { open, onClickClose } = props;
   console.log("ChildAreaが再レンダリングされた");
-  const { open } = props;
+
+  const data = [...Array(100).keys()];
+  data.forEach(() => {
+    console.log("...");
+  });
+
   return (
     <>
       {open ? (
         <div style={style}>
           <p>子コンポーネント</p>
+          <button onClick={onClickClose}>閉じる</button>
         </div>
       ) : null}
     </>
