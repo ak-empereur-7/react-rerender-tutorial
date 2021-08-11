@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { ChildArea } from "./ChildArea";
 import "./styles.css";
 
@@ -14,6 +14,10 @@ export default function App() {
   // [setOpen]は変更対象の変数。setOpen変数が変わったらsetOpenを新しく生成しますよということ
   // []からの場合は、最初に生成したものをずっと使う
   const onClickClose = useCallback(() => setOpen(false), [setOpen]);
+
+  // memo、useMemoは別物
+  // memo:コンポーネント,useMemo:変数
+  const temp = useMemo(() => 1 + 3, []);
 
   return (
     <div className="App">
